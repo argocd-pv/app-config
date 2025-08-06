@@ -30,10 +30,10 @@ spec:
   
   # Configurações de sincronização
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
+    # automated:
+    #   prune: true
+    #   selfHeal: true
+    #   allowEmpty: false
     syncOptions:
       - CreateNamespace=true
       - PrunePropagationPolicy=foreground
