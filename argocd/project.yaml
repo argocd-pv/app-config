@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: simple-web-apps
+  namespace: argocd
+spec:
+  description: Projeto para aplicações web simples
+  
+  # Repositórios permitidos
+  sourceRepos:
+  - 'https://github.com/seu-usuario/my-app-repo.git'
+  - 'https://charts.helm.sh/stable'
+  
+  # Destinos permitidos
+  destinations:
+  - namespace: default
+    server: https://kubernetes.default.svc
+  - namespace: development
+    server: https://kubernetes.default.svc
+  - namespace: production
+    server: https://kubernetes.default.svc
+  
+  # Recursos permitidos
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: Service
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Secret
+  - group: apps
+    kind: Deployment
+  - group: networking.k8s.io
+    kind: Ingress
+  
+  # Roles
+  roles:
+  - name: admin
+    description: Admin access
+    policies:
+    - p, proj:simple-web-apps:admin, applications, *, simple-web-apps/*, allow
+    groups:
+    - argocd-admins

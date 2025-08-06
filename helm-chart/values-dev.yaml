@@ -1,0 +1,24 @@
+# Override para desenvolvimento
+replicaCount: 1
+
+image:
+  tag: "1.25-alpine"
+
+env:
+  APP_ENV: "development"
+  DEBUG: "true"
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+ingress:
+  hosts:
+    - host: simple-app-dev.local
+      paths:
+        - path: /
+          pathType: Prefix

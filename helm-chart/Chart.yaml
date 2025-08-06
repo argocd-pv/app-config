@@ -1,0 +1,14 @@
+apiVersion: v2
+name: simple-web-app
+description: Uma aplicação web simples para demonstração
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - web
+  - demo
+  - nginx
+home: https://github.com/seu-usuario/my-app-repo
+maintainers:
+  - name: Seu Nome
+    email: seu.email@exemplo.com

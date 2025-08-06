@@ -1,0 +1,77 @@
+# Configurações da aplicação
+app:
+  name: simple-web-app
+  version: "1.0.0"
+
+# Configurações da imagem
+image:
+  repository: nginx
+  tag: "1.25-alpine"
+  pullPolicy: IfNotPresent
+
+# Configurações de réplicas
+replicaCount: 2
+
+# Configurações do serviço
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+# Configurações do ingress
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: simple-app.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# Configurações de recursos
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
+
+# Configurações de ambiente
+env:
+  APP_ENV: "production"
+  DEBUG: "false"
+
+# Configurações de health checks
+health:
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 80
+    initialDelaySeconds: 30
+    periodSeconds: 10
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 80
+    initialDelaySeconds: 5
+    periodSeconds: 5
+
+# Labels e annotations
+labels:
+  app.kubernetes.io/name: simple-web-app
+  app.kubernetes.io/component: web
+
+annotations: {}
+
+# Configurações de node selector
+nodeSelector: {}
+
+# Configurações de tolerations
+tolerations: []
+
+# Configurações de affinity
+affinity: {}
