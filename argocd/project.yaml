@@ -8,7 +8,7 @@ spec:
   
   # Repositórios permitidos
   sourceRepos:
-  - 'https://github.com/seu-usuario/my-app-repo.git'
+  - 'https://github.com/paulovitorcl/app-config.git'
   - 'https://charts.helm.sh/stable'
   
   # Destinos permitidos

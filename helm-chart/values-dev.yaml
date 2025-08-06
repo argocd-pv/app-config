@@ -15,10 +15,3 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
-ingress:
-  hosts:
-    - host: simple-app-dev.local
-      paths:
-        - path: /
-          pathType: Prefix
