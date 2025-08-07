@@ -22,10 +22,6 @@ spec:
           value: "1.25-alpine"
         - name: replicaCount
           value: "1"
-        - name: app.repository.url
-          value: {{ .Values.app.repository.url }}
-        - name: app.repository.revision
-          value: {{ .Values.app.repository.revision }}
   
   # Configuração do destino
   destination:
